@@ -1,0 +1,2 @@
+- [x] Replace the recreated logo with the official uploaded logo and matching favicon.
+- [x] Match reference typography and restore original photographic artwork.

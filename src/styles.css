@@ -65,33 +65,33 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.975 0.015 70);
-  --foreground: oklch(0.3 0.06 165);
+  --radius: 0.5rem;
+  --background: oklch(0.966 0.025 75);
+  --foreground: oklch(0.27 0.052 171);
   --card: oklch(0.99 0.008 70);
   --card-foreground: oklch(0.3 0.06 165);
   --popover: oklch(0.99 0.008 70);
   --popover-foreground: oklch(0.3 0.06 165);
-  --primary: oklch(0.62 0.21 33);
+  --primary: oklch(0.646 0.226 35);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.95 0.03 65);
+  --secondary: oklch(0.956 0.033 73);
   --secondary-foreground: oklch(0.3 0.06 165);
   --muted: oklch(0.95 0.02 70);
   --muted-foreground: oklch(0.45 0.03 60);
   --accent: oklch(0.8 0.15 75);
   --accent-foreground: oklch(0.3 0.06 165);
-  --brand-green: oklch(0.45 0.1 160);
+  --brand-green: oklch(0.29 0.061 172);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.9 0.03 60);
   --input: oklch(0.9 0.03 60);
   --ring: oklch(0.62 0.21 33);
-  --gradient-hero: linear-gradient(180deg, oklch(0.88 0.06 220) 0%, oklch(0.9 0.07 55) 55%, oklch(0.86 0.1 55) 100%);
+  --gradient-hero: linear-gradient(180deg, oklch(0.9 0.07 190) 0%, oklch(0.94 0.045 90) 26%, oklch(0.88 0.095 70) 65%, oklch(0.81 0.12 65) 100%);
   --gradient-cta: linear-gradient(100deg, oklch(0.93 0.06 70), oklch(0.8 0.15 55));
   --gradient-cream: linear-gradient(180deg, oklch(0.98 0.015 70), oklch(0.96 0.03 60));
-  --shadow-card: 0 10px 30px -14px oklch(0.5 0.1 40 / 0.3);
-  --font-serif: "DM Serif Display", Georgia, serif;
-  --font-sans: "Manrope", system-ui, sans-serif;
+  --shadow-card: 0 1px 3px oklch(0.5 0.1 40 / 0.04);
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-sans: Arial, Helvetica, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -152,15 +152,29 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
-  h1, h2, h3, .font-display { font-family: var(--font-serif); letter-spacing: -0.02em; }
+  h1, h2, h3, .font-display { font-family: var(--font-serif); font-weight: 700; letter-spacing: 0; }
 }
 
 @utility eyebrow {
-  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.3em; text-transform: uppercase; color: var(--primary);
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0; text-transform: uppercase; color: var(--primary);
 }
 @utility bg-hero { background-image: var(--gradient-hero); }
 @utility bg-cta { background-image: var(--gradient-cta); }
 @utility bg-cream { background-image: var(--gradient-cream); }
 @utility shadow-card { box-shadow: var(--shadow-card); }
 @layer base {
+}
+
+.summit-hero { min-height: 660px; }
+.summit-hero-art { position: absolute; inset: 0 0 0 auto; width: 54%; height: 100%; object-fit: cover; object-position: right bottom; mask-image: linear-gradient(to right, transparent, black 15%); }
+.summit-logo { width: 260px; max-width: 100%; height: auto; mix-blend-mode: multiply; }
+.summit-heading { font-size: 48px; line-height: 1.08; }
+.summit-hero-copy { max-width: 550px; }
+.attendee-art { width: 128px; height: 100px; flex-shrink: 0; object-fit: cover; align-self: end; mix-blend-mode: multiply; }
+@media (max-width: 767px) {
+  .summit-hero { min-height: 850px; }
+  .summit-hero-art { inset: auto 0 0; width: 100%; height: 330px; mask-image: linear-gradient(to bottom, transparent, black 25%); object-position: center 65%; }
+  .summit-heading { font-size: 36px; }
+  .summit-logo { width: 220px; }
+  .summit-hero-copy { max-width: 100%; }
 }
