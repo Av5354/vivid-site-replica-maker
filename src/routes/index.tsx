@@ -1,24 +1,360 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useRef } from "react";
+import {
+  ArrowRight, ArrowLeft, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
+  Cpu, Factory, Waypoints, Coins, ShoppingCart, User, Briefcase, Landmark,
+  Laptop, Crown, Building2, LineChart, Lightbulb, Send,
+} from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import hero from "@/assets/hero.jpg";
+import trophy from "@/assets/trophy.jpg";
+import why1 from "@/assets/why-1.jpg";
+import why2 from "@/assets/why-2.jpg";
+import why3 from "@/assets/why-3.jpg";
+import why4 from "@/assets/why-4.jpg";
+import sTech from "@/assets/sector-tech.jpg";
+import sMan from "@/assets/sector-manufacturing.jpg";
+import sInfra from "@/assets/sector-infra.jpg";
+import sFin from "@/assets/sector-finance.jpg";
+import sSus from "@/assets/sector-sustain.jpg";
+import sCon from "@/assets/sector-consumer.jpg";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "ET Edge Bharat Growth Summit – South Edition | 10 Dec 2026, Bengaluru" },
+      { name: "description", content: "Two Forces, One Bharat: bridging generations of enterprise to build the businesses of tomorrow. 10 December 2026, Bengaluru." },
+      { property: "og:title", content: "ET Edge Bharat Growth Summit – South Edition" },
+      { property: "og:description", content: "Bharat's growth story is being written in Bengaluru. 10 December 2026." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const btnPrimary = "inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-card transition hover:brightness-110";
+const btnOutline = "inline-flex items-center gap-2 rounded-md border border-foreground/30 bg-card/70 px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-card";
+
+function CTAs() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex flex-wrap gap-3">
+      <a href="#invite" className={btnPrimary}>Request an Invite <ArrowRight className="h-4 w-4" /></a>
+      <a href="#partner" className={btnOutline}>Partnership Opportunities</a>
     </div>
+  );
+}
+
+function Logo() {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="flex items-center gap-2">
+        <div className="flex h-12 w-12 flex-col items-center justify-center rounded-sm bg-primary text-primary-foreground">
+          <span className="font-display text-xl leading-none">ET</span>
+          <span className="text-[7px] font-bold">Edge</span>
+        </div>
+        <div className="font-sans text-lg font-extrabold leading-[1.05] text-brand-green">Bharat<br />Growth<br />Summit</div>
+      </div>
+      <p className="mt-1 text-[10px] font-bold tracking-[0.4em] text-brand-green">SOUTH EDITION</p>
+      <p className="text-[9px] font-bold tracking-[0.35em] text-foreground/70">BUILDING WHAT'S NEXT</p>
+    </div>
+  );
+}
+
+const why = [
+  { icon: BarChart3, t: "A powerful economic engine", d: "Driving innovation, investment and next-gen industries.", img: why1 },
+  { icon: Users, t: "A hub for talent and technology", d: "Home to world-class talent and a thriving startup ecosystem.", img: why2 },
+  { icon: Settings, t: "A leader in manufacturing and exports", d: "Strengthening India's global competitiveness.", img: why3 },
+  { icon: Leaf, t: "A model for sustainable and inclusive growth", d: "Building a more resilient, equitable and future-ready Bharat.", img: why4 },
+];
+const sectors = [
+  { icon: Cpu, t: "Technology & AI", img: sTech },
+  { icon: Factory, t: "Manufacturing", img: sMan },
+  { icon: Waypoints, t: "Infrastructure", img: sInfra },
+  { icon: Coins, t: "Financial Services", img: sFin },
+  { icon: Leaf, t: "Sustainability", img: sSus },
+  { icon: ShoppingCart, t: "Consumer & Retail", img: sCon },
+];
+const topics = [
+  ["Legacy and reinvention", "Understanding how established enterprises can transform business models while retaining their core strengths."],
+  ["From startup to scale-up", "Exploring the transition from early traction to profitability, sustainable growth and long-term market leadership."],
+  ["Capital and growth", "Examining funding opportunities, investor expectations, valuations, acquisitions and exit strategies."],
+  ["Digital transformation", "Understanding how AI, automation and technology can improve business performance and competitiveness."],
+  ["The power of collaboration", "Identifying opportunities for partnerships between corporates, startups, investors and research institutions."],
+  ["Building global champions", "Exploring how Indian businesses can expand into new markets and strengthen their global competitiveness."],
+  ["Future-ready leadership", "Understanding the leadership capabilities, governance and organisational culture needed to navigate business transformation."],
+  ["Recognising enterprise excellence", "Celebrating organisations and individuals contributing to innovation, transformation and India's growth story."],
+];
+const attend = [
+  { t: "Founders & Co-Founders", i: User }, { t: "CEOs & Managing Directors", i: Briefcase },
+  { t: "Policymakers & Government Officials", i: Landmark }, { t: "CIO & COO", i: Laptop },
+  { t: "Heads of Strategy & Digital Transformation", i: Crown }, { t: "Venture Capitalists & Angel Investors", i: Building2 },
+  { t: "Private Equity Leaders", i: LineChart }, { t: "Startup Ecosystem Enablers & Incubators", i: Lightbulb },
+  { t: "Corporate Venture Arms & Accelerators", i: Send },
+];
+const awards = [
+  { c: "Startups & Entrepreneurs", tone: "bg-primary", items: ["Emerging Startup of the Year", "Startup of the Year", "Startup of the Year – South", "South Indian Startup to Watch", "Bootstrap Champion", "Emerging Entrepreneur of the Year"] },
+  { c: "Growth & Disruption", tone: "bg-brand-green", items: ["Market Disruptor of the Year", "High Growth Company of the Year", "Business Model Innovation Award", "Customer Experience Excellence Award", "Export Growth Leader", "Make in India Innovation Leader"] },
+  { c: "Consumer & Commerce", tone: "bg-accent", items: ["Emerging Consumer Brand of the Year", "D2C Brand of the Year", "E-commerce Innovation Leader", "Most Loved Consumer Brand"] },
+  { c: "Technology & Sectors", tone: "bg-foreground", items: ["SaaS Company of the Year", "AI Innovation Leader of the Year", "Business Technology Innovator of the Year", "DeepTech Innovation Leader", "FinTech Innovator of the Year", "HealthTech Innovator of the Year", "EdTech Innovator of the Year", "Mobility Innovation Leader"] },
+];
+const partners = ["Title Partner", "Powered By", "Associate Partner", "Knowledge Partner", "Community Partner", "Media Partner"];
+
+function SectionHead({ eyebrow, title, desc }: { eyebrow: string; title: string; desc?: string }) {
+  return (
+    <div className="mb-10 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
+      <div className="border-l-2 border-primary pl-5">
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 className="mt-3 text-4xl leading-tight md:text-5xl">{title}</h2>
+      </div>
+      {desc && <p className="border-l border-primary/50 pl-5 text-sm leading-relaxed text-muted-foreground">{desc}</p>}
+    </div>
+  );
+}
+
+function Index() {
+  const slider = useRef<HTMLDivElement>(null);
+  const scroll = (d: number) => slider.current?.scrollBy({ left: d * 260, behavior: "smooth" });
+  let n = 0;
+
+  return (
+    <main className="overflow-x-hidden">
+      {/* HERO */}
+      <section className="relative min-h-[680px] bg-hero">
+        <img src={hero} alt="Bengaluru skyline with Vidhana Soudha and metro" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover object-right" />
+        <div className="relative mx-auto max-w-7xl px-6 py-14 md:py-20">
+          <div className="max-w-xl">
+            <div className="inline-block"><Logo /></div>
+            <div className="mt-6 flex items-center gap-4 text-xs font-bold tracking-[0.25em] text-foreground">
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" /> 10 DEC 2026</span>
+              <span className="h-4 w-px bg-foreground/40" />
+              <span className="flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> BENGALURU</span>
+            </div>
+            <h1 className="mt-6 text-5xl leading-[1.02] text-primary md:text-7xl">
+              Bharat's growth story is being written in <span className="text-brand-green">Bengaluru.</span>
+            </h1>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-foreground/80">
+              Two Forces, One Bharat : Bridging generations of enterprise to build the businesses of tomorrow.
+            </p>
+            <p className="mt-3 font-semibold text-primary">10<sup>th</sup> December 2026 | Bengaluru</p>
+            <div className="mt-8"><CTAs /></div>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="bg-cream">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1.2fr_1.5fr]">
+          <p className="eyebrow text-foreground md:border-r md:border-primary/50">About<br />the Summit</p>
+          <h2 className="text-4xl leading-tight md:text-5xl">A platform for the leaders shaping what's next.</h2>
+          <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+            <p>As established organisations reinvent themselves and emerging ventures move towards sustainable scale, the opportunities for collaboration are expanding.</p>
+            <p>The ET Edge Bharat Growth Summit – South Edition brings together founders, business leaders, investors, policymakers and ecosystem enablers to explore how experience and innovation can come together to shape the next phase of Indian enterprise.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY */}
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHead eyebrow="Why this matters" title="South India is a key engine of the nation's growth." desc="From innovation and manufacturing to infrastructure and consumer markets, South India is powering a new phase of India's economic journey." />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {why.map((w) => (
+              <article key={w.t} className="flex flex-col overflow-hidden rounded-2xl bg-card shadow-card">
+                <div className="p-6">
+                  <w.icon className="h-8 w-8 text-primary" />
+                  <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{w.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{w.d}</p>
+                </div>
+                <img src={w.img} alt="" loading="lazy" className="mt-auto h-auto w-full" />
+              </article>
+            ))}
+          </div>
+          <div className="mt-10"><CTAs /></div>
+        </div>
+      </section>
+
+      {/* SECTORS */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="eyebrow">The Growth Engines</p>
+              <h2 className="mt-3 text-4xl md:text-5xl">Sectors in focus.</h2>
+            </div>
+            <div className="flex items-center gap-6">
+              <p className="max-w-xs text-sm text-muted-foreground">Conversations, insights and collaborations across the industries shaping India's next decade.</p>
+              <div className="flex gap-2">
+                <button aria-label="Previous" onClick={() => scroll(-1)} className="grid h-10 w-10 place-items-center rounded-full border border-foreground/30 hover:bg-card"><ArrowLeft className="h-4 w-4" /></button>
+                <button aria-label="Next" onClick={() => scroll(1)} className="grid h-10 w-10 place-items-center rounded-full border border-foreground/30 hover:bg-card"><ArrowRight className="h-4 w-4" /></button>
+              </div>
+            </div>
+          </div>
+          <div ref={slider} className="flex snap-x gap-4 overflow-x-auto pb-4 [scrollbar-width:none]">
+            {sectors.map((s) => (
+              <article key={s.t} className="relative w-56 shrink-0 snap-start overflow-hidden rounded-2xl bg-card shadow-card">
+                <div className="p-5">
+                  <s.icon className="h-7 w-7 text-primary" />
+                  <h3 className="mt-3 font-sans text-base font-bold text-foreground">{s.t}</h3>
+                </div>
+                <img src={s.img} alt={s.t} loading="lazy" className="h-48 w-full object-cover" />
+                <span className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center rounded-full bg-card shadow-card"><ArrowRight className="h-4 w-4" /></span>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-16 rounded-3xl bg-card p-8 shadow-card md:p-12">
+            <h3 className="text-3xl md:text-4xl">Topics of Discussion at the Summit</h3>
+            <div className="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
+              {topics.map(([t, d], i) => (
+                <div key={t} className="flex gap-4 border-t border-border pt-5">
+                  <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-10"><CTAs /></div>
+        </div>
+      </section>
+
+      {/* ATTEND */}
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <SectionHead eyebrow="Who should attend" title="A platform for every builder of Bharat's next chapter." desc="Join a distinguished community of leaders, innovators, investors and policymakers driving India's next phase of growth from the South and beyond." />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {attend.map((a, i) => (
+              <div key={a.t} className="flex items-center justify-between overflow-hidden rounded-2xl bg-card p-6 shadow-card">
+                <div>
+                  <p className="font-display text-xl text-primary">{String(i + 1).padStart(2, "0")}</p>
+                  <span className="my-2 block h-px w-6 bg-primary" />
+                  <p className="font-display text-lg leading-snug text-foreground">{a.t}</p>
+                </div>
+                <div className={`grid h-24 w-24 shrink-0 place-items-center rounded-full ${i % 3 === 1 ? "bg-brand-green/80" : "bg-primary/85"}`}>
+                  <a.i className="h-10 w-10 text-primary-foreground" />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10"><CTAs /></div>
+        </div>
+      </section>
+
+      {/* AWARDS */}
+      <section className="relative bg-cream">
+        <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" className="absolute inset-y-0 right-0 hidden h-full w-3/5 object-cover object-right md:block" />
+        <div className="relative mx-auto max-w-7xl px-6 py-24">
+          <div className="max-w-xl border-l-2 border-primary pl-6">
+            <p className="eyebrow">Bharat Growth Awards</p>
+            <h2 className="mt-4 text-5xl leading-[1.05] md:text-6xl">Recognising the businesses and leaders growing Bharat.</h2>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">The Bharat Growth Awards celebrate bold ideas, transformative businesses and exceptional leaders who are driving India's next phase of growth, with a special focus on startups, unicorns and high-impact enterprises from across the country.</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">The Bharat Growth Awards recognise organisations and individuals demonstrating business growth, innovation, market relevance and the ability to create lasting impact.</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#nominate" className={`${btnPrimary} tracking-widest`}>NOMINATE NOW <ArrowRight className="h-4 w-4" /></a>
+              <Dialog>
+                <DialogTrigger className={btnOutline}>Evaluation Approach &amp; Selection</DialogTrigger>
+                <DialogContent className="bg-card">
+                  <DialogHeader><DialogTitle className="font-display text-2xl">Evaluation Approach &amp; Selection</DialogTitle></DialogHeader>
+                  <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
+                    <h4 className="font-bold text-foreground">Evaluation Approach</h4>
+                    <p>Organisations are assessed on the strength of their performance across these parameters, taking into account their business stage, sector, operating model and growth trajectory.</p>
+                    <p>The evaluation considers relevant business information and available supporting evidence to identify organisations demonstrating growth, innovation, market impact and long-term potential.</p>
+                    <h4 className="font-bold text-foreground">Selection Process</h4>
+                    <p>The selection process is conducted internally by the ET Edge editorial team, based on an assessment of the defined parameters and relevant business information.</p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+              <Dialog>
+                <DialogTrigger className={btnOutline}>Selection Criteria</DialogTrigger>
+                <DialogContent className="bg-card">
+                  <DialogHeader><DialogTitle className="font-display text-2xl">Selection Criteria</DialogTitle></DialogHeader>
+                  <p className="text-sm text-muted-foreground">The selection criteria table will be published here shortly.</p>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CATEGORIES */}
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-10">
+            <p className="eyebrow">— Award Categories</p>
+            <h2 className="mt-3 text-4xl md:text-5xl">Twenty-four ways to be recognised.</h2>
+            <p className="mt-3 font-sans text-lg font-bold">24 awards. One platform.</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {awards.map((g, gi) => (
+              <article key={g.c} className="overflow-hidden rounded-2xl bg-card shadow-card">
+                <div className={`h-1.5 ${g.tone}`} />
+                <div className="p-6">
+                  <p className="text-xs font-bold text-primary">{String(gi + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-1 text-2xl leading-tight">{g.c}</h3>
+                  <ul className="mt-5 divide-y divide-border">
+                    {g.items.map((it) => { n++; return (
+                      <li key={it} className="flex gap-3 py-2.5 text-sm">
+                        <span className="w-6 shrink-0 text-xs font-bold text-primary">{String(n).padStart(2, "0")}</span>
+                        <span className="text-foreground/80">{it}</span>
+                      </li>
+                    ); })}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-10"><CTAs /></div>
+        </div>
+      </section>
+
+      {/* ICONS */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+          <p className="eyebrow">Recognition</p>
+          <h2 className="mt-3 text-4xl md:text-5xl">Bharat Growth Icons</h2>
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            Alongside the Bharat Growth Awards, the summit will host the <strong className="text-foreground">Bharat Growth Icon recognitions</strong>, acknowledging individuals contributing to India's evolving enterprise landscape through leadership, innovation, transformation and sustainable growth.
+          </p>
+          <div className="mt-8 flex justify-center"><CTAs /></div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section className="bg-muted">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-6 py-10">
+          <div className="mr-4">
+            <p className="eyebrow">Partners</p>
+            <h2 className="text-3xl">Our partners</h2>
+          </div>
+          {partners.map((p) => (
+            <div key={p} className="flex h-20 w-36 flex-col items-center justify-center rounded-lg bg-card shadow-card">
+              <span className="text-[10px] text-muted-foreground">{p}</span>
+              <span className="mt-1 tracking-widest text-muted-foreground/70">LOGO</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section id="invite" className="relative overflow-hidden bg-cta">
+        <div className="pointer-events-none absolute bottom-0 right-10 hidden items-end gap-4 md:flex">
+          <div className="h-24 w-8 bg-brand-green" /><div className="h-40 w-8 bg-primary" />
+          <div className="h-28 w-10 bg-brand-green" /><div className="h-32 w-6 bg-primary" />
+          <div className="h-36 w-10 bg-accent" /><div className="h-56 w-8 bg-brand-green" />
+        </div>
+        <div id="partner" className="relative mx-auto max-w-7xl px-6 py-20">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl leading-tight text-primary md:text-5xl">Be part of the conversations shaping what's next.</h2>
+            <p className="mt-5 text-base leading-relaxed text-foreground/80">Join the ET Edge Bharat Growth Summit – South Edition as founders, established enterprises, investors and ecosystem leaders explore the opportunities and challenges shaping the next phase of Indian business.</p>
+            <p className="mt-4 font-semibold text-foreground">10 December 2026 | Bengaluru</p>
+            <div className="mt-8"><CTAs /></div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-foreground py-6 text-center text-xs text-primary-foreground/70">
+        © 2026 ET Edge · Bharat Growth Summit – South Edition
+      </footer>
+    </main>
   );
 }
