@@ -6,18 +6,42 @@ import {
   Laptop, Crown, Building2, LineChart, Lightbulb, Send,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import hero from "@/assets/hero.jpg";
-import trophy from "@/assets/trophy.jpg";
-import why1 from "@/assets/why-1.jpg";
-import why2 from "@/assets/why-2.jpg";
-import why3 from "@/assets/why-3.jpg";
-import why4 from "@/assets/why-4.jpg";
-import sTech from "@/assets/sector-tech.jpg";
-import sMan from "@/assets/sector-manufacturing.jpg";
-import sInfra from "@/assets/sector-infra.jpg";
-import sFin from "@/assets/sector-finance.jpg";
-import sSus from "@/assets/sector-sustain.jpg";
-import sCon from "@/assets/sector-consumer.jpg";
+import summitLogo from "@/assets/summit-logo.png.asset.json";
+import heroAsset from "@/assets/original-hero-clean.jpg.asset.json";
+import trophyAsset from "@/assets/original-trophy.jpg.asset.json";
+import whyAsset1 from "@/assets/original-why-1.jpg.asset.json";
+import whyAsset2 from "@/assets/original-why-2.jpg.asset.json";
+import whyAsset3 from "@/assets/original-why-3.jpg.asset.json";
+import whyAsset4 from "@/assets/original-why-4.jpg.asset.json";
+import sectorAsset1 from "@/assets/original-sector-1.jpg.asset.json";
+import sectorAsset2 from "@/assets/original-sector-2.jpg.asset.json";
+import sectorAsset3 from "@/assets/original-sector-3.jpg.asset.json";
+import sectorAsset4 from "@/assets/original-sector-4.jpg.asset.json";
+import sectorAsset5 from "@/assets/original-sector-5.jpg.asset.json";
+import sectorAsset6 from "@/assets/original-sector-6.jpg.asset.json";
+import attendeeAsset1 from "@/assets/attendee-1.jpg.asset.json";
+import attendeeAsset2 from "@/assets/attendee-2.jpg.asset.json";
+import attendeeAsset3 from "@/assets/attendee-3.jpg.asset.json";
+import attendeeAsset4 from "@/assets/attendee-4.jpg.asset.json";
+import attendeeAsset5 from "@/assets/attendee-5.jpg.asset.json";
+import attendeeAsset6 from "@/assets/attendee-6.jpg.asset.json";
+import attendeeAsset7 from "@/assets/attendee-7.jpg.asset.json";
+import attendeeAsset8 from "@/assets/attendee-8.jpg.asset.json";
+import attendeeAsset9 from "@/assets/attendee-9.jpg.asset.json";
+
+const hero = heroAsset.url;
+const trophy = trophyAsset.url;
+const why1 = whyAsset1.url;
+const why2 = whyAsset2.url;
+const why3 = whyAsset3.url;
+const why4 = whyAsset4.url;
+const sTech = sectorAsset1.url;
+const sMan = sectorAsset2.url;
+const sInfra = sectorAsset3.url;
+const sFin = sectorAsset4.url;
+const sSus = sectorAsset5.url;
+const sCon = sectorAsset6.url;
+const attendeeImages = [attendeeAsset1.url, attendeeAsset2.url, attendeeAsset3.url, attendeeAsset4.url, attendeeAsset5.url, attendeeAsset6.url, attendeeAsset7.url, attendeeAsset8.url, attendeeAsset9.url];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,16 +71,10 @@ function CTAs() {
 
 function Logo() {
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex items-center gap-2">
-        <div className="flex h-12 w-12 flex-col items-center justify-center rounded-sm bg-primary text-primary-foreground">
-          <span className="font-display text-xl leading-none">ET</span>
-          <span className="text-[7px] font-bold">Edge</span>
-        </div>
-        <div className="font-sans text-lg font-extrabold leading-[1.05] text-brand-green">Bharat<br />Growth<br />Summit</div>
-      </div>
-      <p className="mt-1 text-[10px] font-bold tracking-[0.4em] text-brand-green">SOUTH EDITION</p>
-      <p className="text-[9px] font-bold tracking-[0.35em] text-foreground/70">BUILDING WHAT'S NEXT</p>
+    <div className="inline-flex flex-col items-center">
+      <img src={summitLogo.url} alt="ET Edge Bharat Growth Summit" width={754} height={259} className="summit-logo" />
+      <p className="mt-2 text-xs font-bold text-foreground">S O U T H  E D I T I O N</p>
+      <p className="mt-1 text-[10px] font-bold text-foreground">B U I L D I N G  W H A T ’ S  N E X T</p>
     </div>
   );
 }
@@ -105,7 +123,7 @@ function SectionHead({ eyebrow, title, desc }: { eyebrow: string; title: string;
     <div className="mb-10 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end">
       <div className="border-l-2 border-primary pl-5">
         <p className="eyebrow">{eyebrow}</p>
-        <h2 className="mt-3 text-4xl leading-tight md:text-5xl">{title}</h2>
+        <h2 className="mt-3 text-3xl leading-tight md:text-[38px]">{title}</h2>
       </div>
       {desc && <p className="border-l border-primary/50 pl-5 text-sm leading-relaxed text-muted-foreground">{desc}</p>}
     </div>
@@ -120,18 +138,18 @@ function Index() {
   return (
     <main className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative min-h-[680px] bg-hero">
-        <img src={hero} alt="Bengaluru skyline with Vidhana Soudha and metro" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover object-right" />
-        <div className="relative mx-auto max-w-7xl px-6 py-14 md:py-20">
-          <div className="max-w-xl">
+      <section className="summit-hero relative bg-hero">
+        <img src={hero} alt="Bengaluru skyline with Vidhana Soudha and metro" width={1920} height={1088} className="summit-hero-art" />
+        <div className="relative mx-auto max-w-7xl px-6 py-10 md:py-12">
+          <div className="summit-hero-copy">
             <div className="inline-block"><Logo /></div>
             <div className="mt-6 flex items-center gap-4 text-xs font-bold tracking-[0.25em] text-foreground">
               <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" /> 10 DEC 2026</span>
               <span className="h-4 w-px bg-foreground/40" />
               <span className="flex items-center gap-1.5"><MapPin className="h-4 w-4 text-primary" /> BENGALURU</span>
             </div>
-            <h1 className="mt-6 text-5xl leading-[1.02] text-primary md:text-7xl">
-              Bharat's growth story is being written in <span className="text-brand-green">Bengaluru.</span>
+            <h1 className="summit-heading mt-6 text-primary">
+              Bharat’s growth story<br className="hidden md:block" /> is being written in <span className="text-brand-green">Bengaluru.</span>
             </h1>
             <p className="mt-6 max-w-md text-base leading-relaxed text-foreground/80">
               Two Forces, One Bharat : Bridging generations of enterprise to build the businesses of tomorrow.
@@ -144,9 +162,9 @@ function Index() {
 
       {/* ABOUT */}
       <section className="bg-cream">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[180px_1.2fr_1.5fr]">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[140px_1.2fr_1.5fr]">
           <p className="eyebrow text-foreground md:border-r md:border-primary/50">About<br />the Summit</p>
-          <h2 className="text-4xl leading-tight md:text-5xl">A platform for the leaders shaping what's next.</h2>
+          <h2 className="text-3xl leading-tight md:text-[38px]">A platform for the leaders shaping what's next.</h2>
           <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
             <p>As established organisations reinvent themselves and emerging ventures move towards sustainable scale, the opportunities for collaboration are expanding.</p>
             <p>The ET Edge Bharat Growth Summit – South Edition brings together founders, business leaders, investors, policymakers and ecosystem enablers to explore how experience and innovation can come together to shape the next phase of Indian enterprise.</p>
@@ -160,13 +178,13 @@ function Index() {
           <SectionHead eyebrow="Why this matters" title="South India is a key engine of the nation's growth." desc="From innovation and manufacturing to infrastructure and consumer markets, South India is powering a new phase of India's economic journey." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {why.map((w) => (
-              <article key={w.t} className="flex flex-col overflow-hidden rounded-2xl bg-card shadow-card">
+              <article key={w.t} className="flex flex-col overflow-hidden rounded-lg bg-card shadow-card">
                 <div className="p-6">
                   <w.icon className="h-8 w-8 text-primary" />
                   <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{w.t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{w.d}</p>
                 </div>
-                <img src={w.img} alt="" loading="lazy" className="mt-auto h-auto w-full" />
+                <img src={w.img} alt="" loading="lazy" className="mt-auto h-40 w-full object-cover" />
               </article>
             ))}
           </div>
@@ -180,7 +198,7 @@ function Index() {
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="eyebrow">The Growth Engines</p>
-              <h2 className="mt-3 text-4xl md:text-5xl">Sectors in focus.</h2>
+              <h2 className="mt-3 text-3xl md:text-[38px]">Sectors in focus.</h2>
             </div>
             <div className="flex items-center gap-6">
               <p className="max-w-xs text-sm text-muted-foreground">Conversations, insights and collaborations across the industries shaping India's next decade.</p>
@@ -192,18 +210,18 @@ function Index() {
           </div>
           <div ref={slider} className="flex snap-x gap-4 overflow-x-auto pb-4 [scrollbar-width:none]">
             {sectors.map((s) => (
-              <article key={s.t} className="relative w-56 shrink-0 snap-start overflow-hidden rounded-2xl bg-card shadow-card">
+              <article key={s.t} className="relative w-56 shrink-0 snap-start overflow-hidden rounded-lg bg-card shadow-card">
                 <div className="p-5">
                   <s.icon className="h-7 w-7 text-primary" />
                   <h3 className="mt-3 font-sans text-base font-bold text-foreground">{s.t}</h3>
                 </div>
-                <img src={s.img} alt={s.t} loading="lazy" className="h-48 w-full object-cover" />
+                <img src={s.img} alt={s.t} loading="lazy" className="h-44 w-full object-cover" />
                 <span className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center rounded-full bg-card shadow-card"><ArrowRight className="h-4 w-4" /></span>
               </article>
             ))}
           </div>
 
-          <div className="mt-16 rounded-3xl bg-card p-8 shadow-card md:p-12">
+          <div className="mt-16 rounded-lg bg-card p-8 shadow-card md:p-12">
             <h3 className="text-3xl md:text-4xl">Topics of Discussion at the Summit</h3>
             <div className="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
               {topics.map(([t, d], i) => (
@@ -224,15 +242,13 @@ function Index() {
           <SectionHead eyebrow="Who should attend" title="A platform for every builder of Bharat's next chapter." desc="Join a distinguished community of leaders, innovators, investors and policymakers driving India's next phase of growth from the South and beyond." />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attend.map((a, i) => (
-              <div key={a.t} className="flex items-center justify-between overflow-hidden rounded-2xl bg-card p-6 shadow-card">
+              <div key={a.t} className="flex min-h-32 items-center justify-between gap-3 overflow-hidden rounded-lg border border-border/50 bg-card pl-6 pt-4 shadow-card">
                 <div>
                   <p className="font-display text-xl text-primary">{String(i + 1).padStart(2, "0")}</p>
                   <span className="my-2 block h-px w-6 bg-primary" />
                   <p className="font-display text-lg leading-snug text-foreground">{a.t}</p>
                 </div>
-                <div className={`grid h-24 w-24 shrink-0 place-items-center rounded-full ${i % 3 === 1 ? "bg-brand-green/80" : "bg-primary/85"}`}>
-                  <a.i className="h-10 w-10 text-primary-foreground" />
-                </div>
+                <img src={attendeeImages[i]} alt="" loading="lazy" className="attendee-art" />
               </div>
             ))}
           </div>
@@ -242,11 +258,11 @@ function Index() {
 
       {/* AWARDS */}
       <section className="relative bg-cream">
-        <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" className="absolute inset-y-0 right-0 hidden h-full w-3/5 object-cover object-right md:block" />
+        <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" className="absolute inset-y-0 right-0 hidden h-full w-1/2 object-cover object-right md:block" />
         <div className="relative mx-auto max-w-7xl px-6 py-24">
-          <div className="max-w-xl border-l-2 border-primary pl-6">
+          <div className="max-w-[560px] border-l-2 border-primary pl-6">
             <p className="eyebrow">Bharat Growth Awards</p>
-            <h2 className="mt-4 text-5xl leading-[1.05] md:text-6xl">Recognising the businesses and leaders growing Bharat.</h2>
+            <h2 className="mt-4 text-5xl leading-[1.05] md:text-[44px]">Recognising the businesses and leaders growing Bharat.</h2>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">The Bharat Growth Awards celebrate bold ideas, transformative businesses and exceptional leaders who are driving India's next phase of growth, with a special focus on startups, unicorns and high-impact enterprises from across the country.</p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">The Bharat Growth Awards recognise organisations and individuals demonstrating business growth, innovation, market relevance and the ability to create lasting impact.</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -281,12 +297,12 @@ function Index() {
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="eyebrow">— Award Categories</p>
-            <h2 className="mt-3 text-4xl md:text-5xl">Twenty-four ways to be recognised.</h2>
+            <h2 className="mt-3 text-3xl md:text-[38px]">Twenty-four ways to be recognised.</h2>
             <p className="mt-3 font-sans text-lg font-bold">24 awards. One platform.</p>
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {awards.map((g, gi) => (
-              <article key={g.c} className="overflow-hidden rounded-2xl bg-card shadow-card">
+              <article key={g.c} className="overflow-hidden rounded-lg bg-card shadow-card">
                 <div className={`h-1.5 ${g.tone}`} />
                 <div className="p-6">
                   <p className="text-xs font-bold text-primary">{String(gi + 1).padStart(2, "0")}</p>
@@ -311,7 +327,7 @@ function Index() {
       <section className="bg-cream">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center">
           <p className="eyebrow">Recognition</p>
-          <h2 className="mt-3 text-4xl md:text-5xl">Bharat Growth Icons</h2>
+          <h2 className="mt-3 text-3xl md:text-[38px]">Bharat Growth Icons</h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
             Alongside the Bharat Growth Awards, the summit will host the <strong className="text-foreground">Bharat Growth Icon recognitions</strong>, acknowledging individuals contributing to India's evolving enterprise landscape through leadership, innovation, transformation and sustainable growth.
           </p>
@@ -344,7 +360,7 @@ function Index() {
         </div>
         <div id="partner" className="relative mx-auto max-w-7xl px-6 py-20">
           <div className="max-w-2xl">
-            <h2 className="text-4xl leading-tight text-primary md:text-5xl">Be part of the conversations shaping what's next.</h2>
+            <h2 className="text-3xl leading-tight text-primary md:text-[38px]">Be part of the conversations shaping what's next.</h2>
             <p className="mt-5 text-base leading-relaxed text-foreground/80">Join the ET Edge Bharat Growth Summit – South Edition as founders, established enterprises, investors and ecosystem leaders explore the opportunities and challenges shaping the next phase of Indian business.</p>
             <p className="mt-4 font-semibold text-foreground">10 December 2026 | Bengaluru</p>
             <div className="mt-8"><CTAs /></div>
