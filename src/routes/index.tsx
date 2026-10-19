@@ -166,7 +166,7 @@ function Index() {
                   <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{w.t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{w.d}</p>
                 </div>
-                <img src={w.img} alt="" loading="lazy" className="mt-auto h-48 w-full object-cover object-bottom" />
+                <img src={w.img} alt="" loading="lazy" className="mt-auto h-auto w-full" />
               </article>
             ))}
           </div>
