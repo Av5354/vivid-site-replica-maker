@@ -7,27 +7,40 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import summitLogo from "@/assets/summit-logo.png.asset.json";
-import heroAsset from "@/assets/original-hero-clean.jpg.asset.json";
-import trophyAsset from "@/assets/original-trophy.jpg.asset.json";
-import whyAsset1 from "@/assets/why-clean-1.jpg.asset.json";
-import whyAsset2 from "@/assets/why-clean-2.jpg.asset.json";
-import whyAsset3 from "@/assets/why-clean-3.jpg.asset.json";
-import whyAsset4 from "@/assets/why-clean-4.jpg.asset.json";
+import heroAsset from "@/assets/supplied-background-1.jpg.asset.json";
+import trophyAsset from "@/assets/supplied-background-3.jpg.asset.json";
+import whyAsset1 from "@/assets/supplied-section-1.jpg.asset.json";
+import whyAsset2 from "@/assets/supplied-section-2.jpg.asset.json";
+import whyAsset3 from "@/assets/supplied-section-3.jpg.asset.json";
+import whyAsset4 from "@/assets/supplied-section-4.jpg.asset.json";
 import sectorAsset1 from "@/assets/original-sector-1.jpg.asset.json";
 import sectorAsset2 from "@/assets/original-sector-2.jpg.asset.json";
 import sectorAsset3 from "@/assets/original-sector-3.jpg.asset.json";
 import sectorAsset4 from "@/assets/original-sector-4.jpg.asset.json";
 import sectorAsset5 from "@/assets/original-sector-5.jpg.asset.json";
 import sectorAsset6 from "@/assets/original-sector-6.jpg.asset.json";
-import attendeeAsset1 from "@/assets/attendee-clean-1.jpg.asset.json";
-import attendeeAsset2 from "@/assets/attendee-clean-2.jpg.asset.json";
-import attendeeAsset3 from "@/assets/attendee-clean-3.jpg.asset.json";
-import attendeeAsset4 from "@/assets/attendee-clean-4.jpg.asset.json";
-import attendeeAsset5 from "@/assets/attendee-clean-5.jpg.asset.json";
-import attendeeAsset6 from "@/assets/attendee-clean-6.jpg.asset.json";
-import attendeeAsset7 from "@/assets/attendee-clean-7.jpg.asset.json";
-import attendeeAsset8 from "@/assets/attendee-clean-8.jpg.asset.json";
-import attendeeAsset9 from "@/assets/attendee-clean-9.jpg.asset.json";
+import attendeeAsset1 from "@/assets/supplied-section-5.jpg.asset.json";
+import attendeeAsset2 from "@/assets/supplied-section-6.jpg.asset.json";
+import attendeeAsset3 from "@/assets/supplied-section-7.jpg.asset.json";
+import attendeeAsset4 from "@/assets/supplied-section-8.jpg.asset.json";
+import attendeeAsset5 from "@/assets/supplied-section-9.jpg.asset.json";
+import attendeeAsset6 from "@/assets/supplied-section-10.jpg.asset.json";
+import attendeeAsset7 from "@/assets/supplied-section-11.jpg.asset.json";
+import attendeeAsset8 from "@/assets/supplied-section-12.jpg.asset.json";
+import attendeeAsset9 from "@/assets/supplied-section-13.jpg.asset.json";
+
+import attendeeBackground from "@/assets/supplied-background-2.jpg.asset.json";
+import categoriesBackground from "@/assets/supplied-background-4.jpg.asset.json";
+import iconsBackground from "@/assets/supplied-background-5.jpg.asset.json";
+import closingBackground from "@/assets/supplied-background-6.jpg.asset.json";
+import legacyArtwork from "@/assets/supplied-section-14.jpg.asset.json";
+import startupArtwork from "@/assets/supplied-section-15.jpg.asset.json";
+import capitalArtwork from "@/assets/supplied-section-16.jpg.asset.json";
+import digitalArtwork from "@/assets/supplied-section-17.jpg.asset.json";
+import recognitionArtwork from "@/assets/supplied-section-18.jpg.asset.json";
+import leadershipArtwork from "@/assets/supplied-section-19.jpg.asset.json";
+import globalArtwork from "@/assets/supplied-section-20.jpg.asset.json";
+import collaborationArtwork from "@/assets/supplied-section-21.jpg.asset.json";
 
 const hero = heroAsset.url;
 const trophy = trophyAsset.url;
@@ -42,6 +55,7 @@ const sFin = sectorAsset4.url;
 const sSus = sectorAsset5.url;
 const sCon = sectorAsset6.url;
 const attendeeImages = [attendeeAsset1.url, attendeeAsset2.url, attendeeAsset3.url, attendeeAsset4.url, attendeeAsset5.url, attendeeAsset6.url, attendeeAsset7.url, attendeeAsset8.url, attendeeAsset9.url];
+const topicImages = [legacyArtwork.url, startupArtwork.url, capitalArtwork.url, digitalArtwork.url, collaborationArtwork.url, globalArtwork.url, leadershipArtwork.url, recognitionArtwork.url];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -138,8 +152,8 @@ function Index() {
   return (
     <main className="overflow-x-hidden">
       {/* HERO */}
-      <section className="summit-hero relative bg-hero">
-        <img src={hero} alt="Bengaluru skyline with Vidhana Soudha and metro" width={1920} height={1088} className="summit-hero-art" />
+      <section className="summit-hero relative bg-background">
+        <img src={hero} alt="Bengaluru skyline with Vidhana Soudha and metro" width={1920} height={1080} className="summit-hero-art" />
         <div className="relative mx-auto max-w-7xl px-6 py-10 md:py-12">
           <div className="summit-hero-copy">
             <div className="inline-block"><Logo /></div>
@@ -178,13 +192,13 @@ function Index() {
           <SectionHead eyebrow="Why this matters" title="South India is a key engine of the nation's growth." desc="From innovation and manufacturing to infrastructure and consumer markets, South India is powering a new phase of India's economic journey." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {why.map((w) => (
-              <article key={w.t} className="flex flex-col overflow-hidden rounded-lg bg-card shadow-card">
-                <div className="p-6">
+              <article key={w.t} className="why-card relative overflow-hidden rounded-lg bg-card shadow-card">
+                <img src={w.img} alt="" loading="lazy" width={400} height={400} className="why-card-art" />
+                <div className="relative z-10 p-6">
                   <w.icon className="h-8 w-8 text-primary" />
                   <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{w.t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{w.d}</p>
                 </div>
-                <img src={w.img} alt="" loading="lazy" className="mt-auto h-40 w-full object-cover" />
               </article>
             ))}
           </div>
@@ -221,13 +235,16 @@ function Index() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-lg bg-card p-8 shadow-card md:p-12">
+          <div className="mt-16">
             <h3 className="text-3xl md:text-4xl">Topics of Discussion at the Summit</h3>
             <div className="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
               {topics.map(([t, d], i) => (
-                <div key={t} className="flex gap-4 border-t border-border pt-5">
-                  <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
+                <div key={t} className="flex items-start gap-4 border-t border-border pt-5">
+                  <img src={topicImages[i]} alt="" loading="lazy" width={400} height={500} className="topic-art" />
+                  <div>
+                    <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -237,8 +254,9 @@ function Index() {
       </section>
 
       {/* ATTEND */}
-      <section className="bg-secondary">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+      <section className="reference-band relative bg-secondary">
+        <img src={attendeeBackground.url} alt="" loading="lazy" width={1920} height={1080} className="reference-band-art" />
+        <div className="relative mx-auto max-w-7xl px-6 py-20">
           <SectionHead eyebrow="Who should attend" title="A platform for every builder of Bharat's next chapter." desc="Join a distinguished community of leaders, innovators, investors and policymakers driving India's next phase of growth from the South and beyond." />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attend.map((a, i) => (
@@ -248,7 +266,9 @@ function Index() {
                   <span className="my-2 block h-px w-6 bg-primary" />
                   <p className="font-display text-lg leading-snug text-foreground">{a.t}</p>
                 </div>
-                <img src={attendeeImages[i]} alt="" loading="lazy" className="attendee-art" />
+                <div className={`attendee-art-frame attendee-art-${i % 2 === 0 ? "warm" : "cool"}`}>
+                  <img src={attendeeImages[i]} alt="" loading="lazy" width={400} height={400} className="attendee-art" />
+                </div>
               </div>
             ))}
           </div>
@@ -257,8 +277,8 @@ function Index() {
       </section>
 
       {/* AWARDS */}
-      <section className="relative bg-cream">
-        <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" className="absolute inset-y-0 right-0 hidden h-full w-1/2 object-cover object-right md:block" />
+      <section className="awards-band reference-band relative bg-background">
+        <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" width={1920} height={1080} className="reference-band-art" />
         <div className="relative mx-auto max-w-7xl px-6 py-24">
           <div className="max-w-[560px] border-l-2 border-primary pl-6">
             <p className="eyebrow">Bharat Growth Awards</p>
@@ -293,8 +313,9 @@ function Index() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="bg-secondary">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+      <section className="reference-band relative bg-secondary">
+        <img src={categoriesBackground.url} alt="" loading="lazy" width={1920} height={1080} className="reference-band-art" />
+        <div className="relative mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="eyebrow">— Award Categories</p>
             <h2 className="mt-3 text-3xl md:text-[38px]">Twenty-four ways to be recognised.</h2>
@@ -324,8 +345,9 @@ function Index() {
       </section>
 
       {/* ICONS */}
-      <section className="bg-cream">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+      <section className="icons-band reference-band relative bg-background">
+        <img src={iconsBackground.url} alt="" loading="lazy" width={1920} height={1080} className="reference-band-art" />
+        <div className="relative mx-auto max-w-4xl px-6 py-20 text-center">
           <p className="eyebrow">Recognition</p>
           <h2 className="mt-3 text-3xl md:text-[38px]">Bharat Growth Icons</h2>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">
@@ -352,12 +374,8 @@ function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section id="invite" className="relative overflow-hidden bg-cta">
-        <div className="pointer-events-none absolute bottom-0 right-10 hidden items-end gap-4 md:flex">
-          <div className="h-24 w-8 bg-brand-green" /><div className="h-40 w-8 bg-primary" />
-          <div className="h-28 w-10 bg-brand-green" /><div className="h-32 w-6 bg-primary" />
-          <div className="h-36 w-10 bg-accent" /><div className="h-56 w-8 bg-brand-green" />
-        </div>
+      <section id="invite" className="closing-band reference-band relative overflow-hidden bg-background">
+        <img src={closingBackground.url} alt="" loading="lazy" width={1920} height={540} className="reference-band-art" />
         <div id="partner" className="relative mx-auto max-w-7xl px-6 py-20">
           <div className="max-w-2xl">
             <h2 className="text-3xl leading-tight text-primary md:text-[38px]">Be part of the conversations shaping what's next.</h2>
