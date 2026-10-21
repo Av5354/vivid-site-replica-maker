@@ -182,48 +182,21 @@ function Index() {
         </div>
       </section>
 
-      {/* SECTORS */}
+      {/* TOPICS */}
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="eyebrow">The Growth Engines</p>
-              <h2 className="mt-3 text-3xl md:text-[38px]">Sectors in focus.</h2>
-            </div>
-            <div className="flex items-center gap-6">
-              <p className="max-w-xs text-sm text-muted-foreground">Conversations, insights and collaborations across the industries shaping India's next decade.</p>
-              <div className="flex gap-2">
-                <button aria-label="Previous" onClick={() => scroll(-1)} className="grid h-10 w-10 place-items-center rounded-full border border-foreground/30 hover:bg-card"><ArrowLeft className="h-4 w-4" /></button>
-                <button aria-label="Next" onClick={() => scroll(1)} className="grid h-10 w-10 place-items-center rounded-full border border-foreground/30 hover:bg-card"><ArrowRight className="h-4 w-4" /></button>
-              </div>
-            </div>
-          </div>
-          <div ref={slider} className="flex snap-x gap-4 overflow-x-auto pb-4 [scrollbar-width:none]">
-            {sectors.map((s) => (
-              <article key={s.t} className="relative w-56 shrink-0 snap-start overflow-hidden rounded-lg bg-card shadow-card">
-                <div className="p-5">
-                  <s.icon className="h-7 w-7 text-primary" />
-                  <h3 className="mt-3 font-sans text-base font-bold text-foreground">{s.t}</h3>
+          <SectionHead eyebrow="Discussion themes" title="Topics of Discussion at the Summit" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {topics.map((tp) => (
+              <article key={tp.t} className="why-card relative overflow-hidden rounded-lg bg-card shadow-card">
+                <img src={tp.img} alt="" loading="lazy" width={400} height={500} className="why-card-art" />
+                <div className="relative z-10 p-6">
+                  <tp.icon className="h-8 w-8 text-primary" />
+                  <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{tp.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{tp.d}</p>
                 </div>
-                <img src={s.img} alt={s.t} loading="lazy" className="h-44 w-full object-cover" />
-                <span className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center rounded-full bg-card shadow-card"><ArrowRight className="h-4 w-4" /></span>
               </article>
             ))}
-          </div>
-
-          <div className="mt-16">
-            <h3 className="text-3xl md:text-4xl">Topics of Discussion at the Summit</h3>
-            <div className="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
-              {topics.map(([t, d], i) => (
-                <div key={t} className="flex items-start gap-4 border-t border-border pt-5">
-                  <img src={topicImages[i]} alt="" loading="lazy" width={400} height={500} className="topic-art" />
-                  <div>
-                    <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
           <div className="mt-10"><CTAs /></div>
         </div>
