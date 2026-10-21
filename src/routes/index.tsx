@@ -188,8 +188,8 @@ function Index() {
           <SectionHead eyebrow="Discussion themes" title="Topics of Discussion at the Summit" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {topics.map((tp) => (
-              <article key={tp.t} className="why-card relative overflow-hidden rounded-lg bg-card shadow-card">
-                <img src={tp.img} alt="" loading="lazy" width={400} height={500} className="why-card-art" />
+              <article key={tp.t} className="why-card topic-card relative overflow-hidden rounded-lg bg-card shadow-card">
+                <img src={tp.img} alt="" loading="lazy" width={400} height={500} className="topic-card-art" />
                 <div className="relative z-10 p-6">
                   <tp.icon className="h-8 w-8 text-primary" />
                   <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{tp.t}</h3>
