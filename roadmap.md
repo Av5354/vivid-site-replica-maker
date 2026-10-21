@@ -1,2 +1,3 @@
 - [x] Replace the recreated logo with the official uploaded logo and matching favicon.
 - [x] Match reference typography and restore original photographic artwork.
+- [ ] Map supplied original backgrounds and individual images to their PDF sections and verify the page.
