@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Use asset-pointer imports for original reference artwork and supplied branding; preserve their proportions so brand assets are not recreated as text.
+- Display supplied complete banner artwork across its full section rather than extracting or masking one side, so the original composition remains intact.

@@ -90,6 +90,8 @@
   --gradient-cta: linear-gradient(100deg, oklch(0.93 0.06 70), oklch(0.8 0.15 55));
   --gradient-cream: linear-gradient(180deg, oklch(0.98 0.015 70), oklch(0.96 0.03 60));
   --shadow-card: 0 1px 3px oklch(0.5 0.1 40 / 0.04);
+  --gradient-attendee-warm: linear-gradient(145deg, oklch(0.75 0.18 40), oklch(0.94 0.05 70));
+  --gradient-attendee-cool: linear-gradient(145deg, oklch(0.73 0.09 235), oklch(0.94 0.025 235));
   --font-serif: "Libre Baskerville", Georgia, serif;
   --font-sans: Arial, Helvetica, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
@@ -165,16 +167,31 @@
 @layer base {
 }
 
-.summit-hero { min-height: 660px; }
-.summit-hero-art { position: absolute; inset: 0 0 0 auto; width: 54%; height: 100%; object-fit: cover; object-position: right bottom; mask-image: linear-gradient(to right, transparent, black 15%); }
+.summit-hero { min-height: 720px; }
+.summit-hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
 .summit-logo { width: 260px; max-width: 100%; height: auto; mix-blend-mode: multiply; }
 .summit-heading { font-size: 48px; line-height: 1.08; }
 .summit-hero-copy { max-width: 550px; }
-.attendee-art { width: 128px; height: 100px; flex-shrink: 0; object-fit: cover; align-self: end; mix-blend-mode: multiply; }
+.why-card { min-height: 410px; }
+.why-card-art { position: absolute; bottom: 0; left: 0; width: 100%; height: auto; }
+.reference-band { overflow: hidden; }
+.reference-band-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.attendee-art { width: 128px; height: 128px; flex-shrink: 0; object-fit: contain; align-self: end; mix-blend-mode: multiply; border-radius: 50% 50% 0 0; }
+.attendee-art-warm { background-image: var(--gradient-attendee-warm); }
+.attendee-art-cool { background-image: var(--gradient-attendee-cool); }
+.icons-band { min-height: 520px; }
+.closing-band .reference-band-art { object-position: right center; }
 @media (max-width: 767px) {
   .summit-hero { min-height: 850px; }
-  .summit-hero-art { inset: auto 0 0; width: 100%; height: 330px; mask-image: linear-gradient(to bottom, transparent, black 25%); object-position: center 65%; }
+  .summit-hero-art { object-position: 30% bottom; }
   .summit-heading { font-size: 36px; }
   .summit-logo { width: 220px; }
   .summit-hero-copy { max-width: 100%; }
+  .why-card { min-height: 430px; }
+  .awards-band { padding-bottom: 300px; }
+  .awards-band .reference-band-art { inset: auto 0 0; height: 320px; object-position: right bottom; }
+  .icons-band { padding-bottom: 140px; }
+  .icons-band .reference-band-art { object-position: 70% center; }
+  .closing-band { padding-bottom: 140px; }
+  .closing-band .reference-band-art { inset: auto 0 0; height: 250px; object-position: right bottom; }
 }
