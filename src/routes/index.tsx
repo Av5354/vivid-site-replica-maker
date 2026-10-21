@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef } from "react";
 import {
-  ArrowRight, ArrowLeft, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
-  Cpu, Factory, Waypoints, Coins, ShoppingCart, User, Briefcase, Landmark,
-  Laptop, Crown, Building2, LineChart, Lightbulb, Send,
+  ArrowRight, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
+  Cpu, Coins, User, Briefcase, Landmark, Laptop, Crown, Building2,
+  LineChart, Lightbulb, Send, History, Rocket, Handshake, Globe, Award,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import summitLogo from "@/assets/summit-logo.png.asset.json";
@@ -13,12 +12,6 @@ import whyAsset1 from "@/assets/supplied-section-1.jpg.asset.json";
 import whyAsset2 from "@/assets/supplied-section-2.jpg.asset.json";
 import whyAsset3 from "@/assets/supplied-section-3.jpg.asset.json";
 import whyAsset4 from "@/assets/supplied-section-4.jpg.asset.json";
-import sectorAsset1 from "@/assets/original-sector-1.jpg.asset.json";
-import sectorAsset2 from "@/assets/original-sector-2.jpg.asset.json";
-import sectorAsset3 from "@/assets/original-sector-3.jpg.asset.json";
-import sectorAsset4 from "@/assets/original-sector-4.jpg.asset.json";
-import sectorAsset5 from "@/assets/original-sector-5.jpg.asset.json";
-import sectorAsset6 from "@/assets/original-sector-6.jpg.asset.json";
 import attendeeAsset1 from "@/assets/supplied-section-5.jpg.asset.json";
 import attendeeAsset2 from "@/assets/supplied-section-6.jpg.asset.json";
 import attendeeAsset3 from "@/assets/supplied-section-7.jpg.asset.json";
@@ -48,14 +41,7 @@ const why1 = whyAsset1.url;
 const why2 = whyAsset2.url;
 const why3 = whyAsset3.url;
 const why4 = whyAsset4.url;
-const sTech = sectorAsset1.url;
-const sMan = sectorAsset2.url;
-const sInfra = sectorAsset3.url;
-const sFin = sectorAsset4.url;
-const sSus = sectorAsset5.url;
-const sCon = sectorAsset6.url;
 const attendeeImages = [attendeeAsset1.url, attendeeAsset2.url, attendeeAsset3.url, attendeeAsset4.url, attendeeAsset5.url, attendeeAsset6.url, attendeeAsset7.url, attendeeAsset8.url, attendeeAsset9.url];
-const topicImages = [legacyArtwork.url, startupArtwork.url, capitalArtwork.url, digitalArtwork.url, collaborationArtwork.url, globalArtwork.url, leadershipArtwork.url, recognitionArtwork.url];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -99,23 +85,15 @@ const why = [
   { icon: Settings, t: "A leader in manufacturing and exports", d: "Strengthening India's global competitiveness.", img: why3 },
   { icon: Leaf, t: "A model for sustainable and inclusive growth", d: "Building a more resilient, equitable and future-ready Bharat.", img: why4 },
 ];
-const sectors = [
-  { icon: Cpu, t: "Technology & AI", img: sTech },
-  { icon: Factory, t: "Manufacturing", img: sMan },
-  { icon: Waypoints, t: "Infrastructure", img: sInfra },
-  { icon: Coins, t: "Financial Services", img: sFin },
-  { icon: Leaf, t: "Sustainability", img: sSus },
-  { icon: ShoppingCart, t: "Consumer & Retail", img: sCon },
-];
 const topics = [
-  ["Legacy and reinvention", "Understanding how established enterprises can transform business models while retaining their core strengths."],
-  ["From startup to scale-up", "Exploring the transition from early traction to profitability, sustainable growth and long-term market leadership."],
-  ["Capital and growth", "Examining funding opportunities, investor expectations, valuations, acquisitions and exit strategies."],
-  ["Digital transformation", "Understanding how AI, automation and technology can improve business performance and competitiveness."],
-  ["The power of collaboration", "Identifying opportunities for partnerships between corporates, startups, investors and research institutions."],
-  ["Building global champions", "Exploring how Indian businesses can expand into new markets and strengthen their global competitiveness."],
-  ["Future-ready leadership", "Understanding the leadership capabilities, governance and organisational culture needed to navigate business transformation."],
-  ["Recognising enterprise excellence", "Celebrating organisations and individuals contributing to innovation, transformation and India's growth story."],
+  { icon: History, t: "Legacy and reinvention", d: "Understanding how established enterprises can transform business models while retaining their core strengths.", img: legacyArtwork.url },
+  { icon: Rocket, t: "From startup to scale-up", d: "Exploring the transition from early traction to profitability, sustainable growth and long-term market leadership.", img: startupArtwork.url },
+  { icon: Coins, t: "Capital and growth", d: "Examining funding opportunities, investor expectations, valuations, acquisitions and exit strategies.", img: capitalArtwork.url },
+  { icon: Cpu, t: "Digital transformation", d: "Understanding how AI, automation and technology can improve business performance and competitiveness.", img: digitalArtwork.url },
+  { icon: Handshake, t: "The power of collaboration", d: "Identifying opportunities for partnerships between corporates, startups, investors and research institutions.", img: collaborationArtwork.url },
+  { icon: Globe, t: "Building global champions", d: "Exploring how Indian businesses can expand into new markets and strengthen their global competitiveness.", img: globalArtwork.url },
+  { icon: Crown, t: "Future-ready leadership", d: "Understanding the leadership capabilities, governance and organisational culture needed to navigate business transformation.", img: leadershipArtwork.url },
+  { icon: Award, t: "Recognising enterprise excellence", d: "Celebrating organisations and individuals contributing to innovation, transformation and India's growth story.", img: recognitionArtwork.url },
 ];
 const attend = [
   { t: "Founders & Co-Founders", i: User }, { t: "CEOs & Managing Directors", i: Briefcase },
@@ -145,8 +123,6 @@ function SectionHead({ eyebrow, title, desc }: { eyebrow: string; title: string;
 }
 
 function Index() {
-  const slider = useRef<HTMLDivElement>(null);
-  const scroll = (d: number) => slider.current?.scrollBy({ left: d * 260, behavior: "smooth" });
   let n = 0;
 
   return (
@@ -206,48 +182,21 @@ function Index() {
         </div>
       </section>
 
-      {/* SECTORS */}
+      {/* TOPICS */}
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="eyebrow">The Growth Engines</p>
-              <h2 className="mt-3 text-3xl md:text-[38px]">Sectors in focus.</h2>
-            </div>
-            <div className="flex items-center gap-6">
-              <p className="max-w-xs text-sm text-muted-foreground">Conversations, insights and collaborations across the industries shaping India's next decade.</p>
-              <div className="flex gap-2">
-                <button aria-label="Previous" onClick={() => scroll(-1)} className="grid h-10 w-10 place-items-center rounded-full border border-foreground/30 hover:bg-card"><ArrowLeft className="h-4 w-4" /></button>
-                <button aria-label="Next" onClick={() => scroll(1)} className="grid h-10 w-10 place-items-center rounded-full border border-foreground/30 hover:bg-card"><ArrowRight className="h-4 w-4" /></button>
-              </div>
-            </div>
-          </div>
-          <div ref={slider} className="flex snap-x gap-4 overflow-x-auto pb-4 [scrollbar-width:none]">
-            {sectors.map((s) => (
-              <article key={s.t} className="relative w-56 shrink-0 snap-start overflow-hidden rounded-lg bg-card shadow-card">
-                <div className="p-5">
-                  <s.icon className="h-7 w-7 text-primary" />
-                  <h3 className="mt-3 font-sans text-base font-bold text-foreground">{s.t}</h3>
+          <SectionHead eyebrow="Discussion themes" title="Topics of Discussion at the Summit" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {topics.map((tp) => (
+              <article key={tp.t} className="why-card topic-card relative overflow-hidden rounded-lg bg-card shadow-card">
+                <img src={tp.img} alt="" loading="lazy" width={400} height={500} className="topic-card-art" />
+                <div className="relative z-10 p-6">
+                  <tp.icon className="h-8 w-8 text-primary" />
+                  <h3 className="mt-4 font-sans text-lg font-bold leading-snug text-foreground">{tp.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{tp.d}</p>
                 </div>
-                <img src={s.img} alt={s.t} loading="lazy" className="h-44 w-full object-cover" />
-                <span className="absolute bottom-3 right-3 grid h-8 w-8 place-items-center rounded-full bg-card shadow-card"><ArrowRight className="h-4 w-4" /></span>
               </article>
             ))}
-          </div>
-
-          <div className="mt-16">
-            <h3 className="text-3xl md:text-4xl">Topics of Discussion at the Summit</h3>
-            <div className="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
-              {topics.map(([t, d], i) => (
-                <div key={t} className="flex items-start gap-4 border-t border-border pt-5">
-                  <img src={topicImages[i]} alt="" loading="lazy" width={400} height={500} className="topic-art" />
-                  <div>
-                    <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
           <div className="mt-10"><CTAs /></div>
         </div>
