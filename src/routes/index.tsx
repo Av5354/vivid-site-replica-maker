@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef } from "react";
 import {
-  ArrowRight, ArrowLeft, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
-  Cpu, Factory, Waypoints, Coins, ShoppingCart, User, Briefcase, Landmark,
-  Laptop, Crown, Building2, LineChart, Lightbulb, Send,
+  ArrowRight, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
+  Cpu, Coins, User, Briefcase, Landmark, Laptop, Crown, Building2,
+  LineChart, Lightbulb, Send, History, Rocket, Handshake, Globe, Award,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import summitLogo from "@/assets/summit-logo.png.asset.json";
@@ -13,12 +12,6 @@ import whyAsset1 from "@/assets/supplied-section-1.jpg.asset.json";
 import whyAsset2 from "@/assets/supplied-section-2.jpg.asset.json";
 import whyAsset3 from "@/assets/supplied-section-3.jpg.asset.json";
 import whyAsset4 from "@/assets/supplied-section-4.jpg.asset.json";
-import sectorAsset1 from "@/assets/original-sector-1.jpg.asset.json";
-import sectorAsset2 from "@/assets/original-sector-2.jpg.asset.json";
-import sectorAsset3 from "@/assets/original-sector-3.jpg.asset.json";
-import sectorAsset4 from "@/assets/original-sector-4.jpg.asset.json";
-import sectorAsset5 from "@/assets/original-sector-5.jpg.asset.json";
-import sectorAsset6 from "@/assets/original-sector-6.jpg.asset.json";
 import attendeeAsset1 from "@/assets/supplied-section-5.jpg.asset.json";
 import attendeeAsset2 from "@/assets/supplied-section-6.jpg.asset.json";
 import attendeeAsset3 from "@/assets/supplied-section-7.jpg.asset.json";
@@ -48,14 +41,7 @@ const why1 = whyAsset1.url;
 const why2 = whyAsset2.url;
 const why3 = whyAsset3.url;
 const why4 = whyAsset4.url;
-const sTech = sectorAsset1.url;
-const sMan = sectorAsset2.url;
-const sInfra = sectorAsset3.url;
-const sFin = sectorAsset4.url;
-const sSus = sectorAsset5.url;
-const sCon = sectorAsset6.url;
 const attendeeImages = [attendeeAsset1.url, attendeeAsset2.url, attendeeAsset3.url, attendeeAsset4.url, attendeeAsset5.url, attendeeAsset6.url, attendeeAsset7.url, attendeeAsset8.url, attendeeAsset9.url];
-const topicImages = [legacyArtwork.url, startupArtwork.url, capitalArtwork.url, digitalArtwork.url, collaborationArtwork.url, globalArtwork.url, leadershipArtwork.url, recognitionArtwork.url];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -99,23 +85,15 @@ const why = [
   { icon: Settings, t: "A leader in manufacturing and exports", d: "Strengthening India's global competitiveness.", img: why3 },
   { icon: Leaf, t: "A model for sustainable and inclusive growth", d: "Building a more resilient, equitable and future-ready Bharat.", img: why4 },
 ];
-const sectors = [
-  { icon: Cpu, t: "Technology & AI", img: sTech },
-  { icon: Factory, t: "Manufacturing", img: sMan },
-  { icon: Waypoints, t: "Infrastructure", img: sInfra },
-  { icon: Coins, t: "Financial Services", img: sFin },
-  { icon: Leaf, t: "Sustainability", img: sSus },
-  { icon: ShoppingCart, t: "Consumer & Retail", img: sCon },
-];
 const topics = [
-  ["Legacy and reinvention", "Understanding how established enterprises can transform business models while retaining their core strengths."],
-  ["From startup to scale-up", "Exploring the transition from early traction to profitability, sustainable growth and long-term market leadership."],
-  ["Capital and growth", "Examining funding opportunities, investor expectations, valuations, acquisitions and exit strategies."],
-  ["Digital transformation", "Understanding how AI, automation and technology can improve business performance and competitiveness."],
-  ["The power of collaboration", "Identifying opportunities for partnerships between corporates, startups, investors and research institutions."],
-  ["Building global champions", "Exploring how Indian businesses can expand into new markets and strengthen their global competitiveness."],
-  ["Future-ready leadership", "Understanding the leadership capabilities, governance and organisational culture needed to navigate business transformation."],
-  ["Recognising enterprise excellence", "Celebrating organisations and individuals contributing to innovation, transformation and India's growth story."],
+  { icon: History, t: "Legacy and reinvention", d: "Understanding how established enterprises can transform business models while retaining their core strengths.", img: legacyArtwork.url },
+  { icon: Rocket, t: "From startup to scale-up", d: "Exploring the transition from early traction to profitability, sustainable growth and long-term market leadership.", img: startupArtwork.url },
+  { icon: Coins, t: "Capital and growth", d: "Examining funding opportunities, investor expectations, valuations, acquisitions and exit strategies.", img: capitalArtwork.url },
+  { icon: Cpu, t: "Digital transformation", d: "Understanding how AI, automation and technology can improve business performance and competitiveness.", img: digitalArtwork.url },
+  { icon: Handshake, t: "The power of collaboration", d: "Identifying opportunities for partnerships between corporates, startups, investors and research institutions.", img: collaborationArtwork.url },
+  { icon: Globe, t: "Building global champions", d: "Exploring how Indian businesses can expand into new markets and strengthen their global competitiveness.", img: globalArtwork.url },
+  { icon: Crown, t: "Future-ready leadership", d: "Understanding the leadership capabilities, governance and organisational culture needed to navigate business transformation.", img: leadershipArtwork.url },
+  { icon: Award, t: "Recognising enterprise excellence", d: "Celebrating organisations and individuals contributing to innovation, transformation and India's growth story.", img: recognitionArtwork.url },
 ];
 const attend = [
   { t: "Founders & Co-Founders", i: User }, { t: "CEOs & Managing Directors", i: Briefcase },
@@ -145,8 +123,6 @@ function SectionHead({ eyebrow, title, desc }: { eyebrow: string; title: string;
 }
 
 function Index() {
-  const slider = useRef<HTMLDivElement>(null);
-  const scroll = (d: number) => slider.current?.scrollBy({ left: d * 260, behavior: "smooth" });
   let n = 0;
 
   return (
