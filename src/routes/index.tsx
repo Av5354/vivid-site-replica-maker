@@ -33,6 +33,14 @@ import attendeeBackground from "@/assets/supplied-background-2.jpg.asset.json";
 import categoriesBackground from "@/assets/supplied-background-4.jpg.asset.json";
 import iconsBackground from "@/assets/supplied-background-5.jpg.asset.json";
 import closingBackground from "@/assets/supplied-background-6.jpg.asset.json";
+import legacyArtwork from "@/assets/supplied-section-14.jpg.asset.json";
+import startupArtwork from "@/assets/supplied-section-15.jpg.asset.json";
+import capitalArtwork from "@/assets/supplied-section-16.jpg.asset.json";
+import digitalArtwork from "@/assets/supplied-section-17.jpg.asset.json";
+import recognitionArtwork from "@/assets/supplied-section-18.jpg.asset.json";
+import leadershipArtwork from "@/assets/supplied-section-19.jpg.asset.json";
+import globalArtwork from "@/assets/supplied-section-20.jpg.asset.json";
+import collaborationArtwork from "@/assets/supplied-section-21.jpg.asset.json";
 
 const hero = heroAsset.url;
 const trophy = trophyAsset.url;
@@ -47,6 +55,7 @@ const sFin = sectorAsset4.url;
 const sSus = sectorAsset5.url;
 const sCon = sectorAsset6.url;
 const attendeeImages = [attendeeAsset1.url, attendeeAsset2.url, attendeeAsset3.url, attendeeAsset4.url, attendeeAsset5.url, attendeeAsset6.url, attendeeAsset7.url, attendeeAsset8.url, attendeeAsset9.url];
+const topicImages = [legacyArtwork.url, startupArtwork.url, capitalArtwork.url, digitalArtwork.url, collaborationArtwork.url, globalArtwork.url, leadershipArtwork.url, recognitionArtwork.url];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -226,13 +235,16 @@ function Index() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-lg bg-card p-8 shadow-card md:p-12">
+          <div className="mt-16">
             <h3 className="text-3xl md:text-4xl">Topics of Discussion at the Summit</h3>
             <div className="mt-8 grid gap-x-10 gap-y-6 md:grid-cols-2">
               {topics.map(([t, d], i) => (
-                <div key={t} className="flex gap-4 border-t border-border pt-5">
-                  <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
+                <div key={t} className="flex items-start gap-4 border-t border-border pt-5">
+                  <img src={topicImages[i]} alt="" loading="lazy" width={400} height={500} className="topic-art" />
+                  <div>
+                    <span className="font-display text-2xl text-primary">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground"><strong className="block font-sans text-base text-foreground">{t}</strong>{d}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -254,7 +266,9 @@ function Index() {
                   <span className="my-2 block h-px w-6 bg-primary" />
                   <p className="font-display text-lg leading-snug text-foreground">{a.t}</p>
                 </div>
-                <img src={attendeeImages[i]} alt="" loading="lazy" width={400} height={400} className={`attendee-art attendee-art-${i % 2 === 0 ? "warm" : "cool"}`} />
+                <div className={`attendee-art-frame attendee-art-${i % 2 === 0 ? "warm" : "cool"}`}>
+                  <img src={attendeeImages[i]} alt="" loading="lazy" width={400} height={400} className="attendee-art" />
+                </div>
               </div>
             ))}
           </div>

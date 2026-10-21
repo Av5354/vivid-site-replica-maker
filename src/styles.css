@@ -179,6 +179,9 @@
 .attendee-art { width: 128px; height: 128px; flex-shrink: 0; object-fit: contain; align-self: end; mix-blend-mode: multiply; border-radius: 50% 50% 0 0; }
 .attendee-art-warm { background-image: var(--gradient-attendee-warm); }
 .attendee-art-cool { background-image: var(--gradient-attendee-cool); }
+.attendee-art-frame { width: 128px; height: 128px; flex-shrink: 0; align-self: end; border-radius: 50% 50% 0 0; overflow: hidden; }
+.topic-art { width: 112px; height: 140px; flex-shrink: 0; object-fit: contain; mix-blend-mode: multiply; }
+.closing-band h2, .closing-band p { max-width: 520px; }
 .icons-band { min-height: 520px; }
 .closing-band .reference-band-art { object-position: right center; }
 @media (max-width: 767px) {
@@ -187,6 +190,7 @@
   .summit-heading { font-size: 36px; }
   .summit-logo { width: 220px; }
   .summit-hero-copy { max-width: 100%; }
+  .topic-art { width: 80px; height: 100px; }
   .why-card { min-height: 430px; }
   .awards-band { padding-bottom: 300px; }
   .awards-band .reference-band-art { inset: auto 0 0; height: 320px; object-position: right bottom; }
