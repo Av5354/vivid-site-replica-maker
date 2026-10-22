@@ -92,6 +92,7 @@
   --shadow-card: 0 1px 3px oklch(0.5 0.1 40 / 0.04);
   --gradient-attendee-warm: linear-gradient(145deg, oklch(0.75 0.18 40), oklch(0.94 0.05 70));
   --gradient-attendee-cool: linear-gradient(145deg, oklch(0.73 0.09 235), oklch(0.94 0.025 235));
+  --paper-texture: url("/__l5e/assets-v1/4233d86c-8a0c-4d8f-96d7-ca638d6ba80b/paper-texture.jpg");
   --font-serif: "Libre Baskerville", Georgia, serif;
   --font-sans: Arial, Helvetica, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
@@ -163,6 +164,7 @@
 @utility bg-hero { background-image: var(--gradient-hero); }
 @utility bg-cta { background-image: var(--gradient-cta); }
 @utility bg-cream { background-image: var(--gradient-cream); }
+@utility bg-paper { background-image: var(--paper-texture); background-size: cover; }
 @utility shadow-card { box-shadow: var(--shadow-card); }
 @layer base {
 }

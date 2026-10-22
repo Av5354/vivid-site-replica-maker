@@ -151,7 +151,7 @@ function Index() {
       </section>
 
       {/* ABOUT */}
-      <section className="bg-cream">
+      <section className="bg-paper">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[140px_1.2fr_1.5fr]">
           <p className="eyebrow text-foreground md:border-r md:border-primary/50">About<br />the Summit</p>
           <h2 className="text-3xl leading-tight md:text-[38px]">A platform for the leaders shaping what's next.</h2>
@@ -163,7 +163,7 @@ function Index() {
       </section>
 
       {/* WHY */}
-      <section className="bg-secondary">
+      <section className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHead eyebrow="Why this matters" title="South India is a key engine of the nation's growth." desc="From innovation and manufacturing to infrastructure and consumer markets, South India is powering a new phase of India's economic journey." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -183,7 +183,7 @@ function Index() {
       </section>
 
       {/* TOPICS */}
-      <section className="bg-cream">
+      <section className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHead eyebrow="Discussion themes" title="Topics of Discussion at the Summit" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
