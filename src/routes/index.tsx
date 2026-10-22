@@ -171,7 +171,7 @@ function Index() {
       </section>
 
       {/* ABOUT */}
-      <section className="bg-paper">
+      <section id="about" className="bg-paper">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-[140px_1.2fr_1.5fr]">
           <p className="eyebrow text-foreground md:border-r md:border-primary/50">About<br />the Summit</p>
           <h2 className="text-3xl leading-tight md:text-[38px]">A platform for the leaders shaping what's next.</h2>
@@ -183,7 +183,7 @@ function Index() {
       </section>
 
       {/* WHY */}
-      <section className="bg-paper">
+      <section id="why" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHead eyebrow="Why this matters" title="South India is a key engine of the nation's growth." desc="From innovation and manufacturing to infrastructure and consumer markets, South India is powering a new phase of India's economic journey." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -203,7 +203,7 @@ function Index() {
       </section>
 
       {/* TOPICS */}
-      <section className="bg-paper">
+      <section id="topics" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHead eyebrow="Discussion themes" title="Topics of Discussion at the Summit" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -223,7 +223,7 @@ function Index() {
       </section>
 
       {/* ATTEND */}
-      <section className="reference-band relative bg-secondary">
+      <section id="attend" className="reference-band relative bg-secondary">
         <img src={attendeeBackground.url} alt="" loading="lazy" width={1920} height={1080} className="reference-band-art" />
         <div className="relative mx-auto max-w-7xl px-6 py-20">
           <SectionHead eyebrow="Who should attend" title="A platform for every builder of Bharat's next chapter." desc="Join a distinguished community of leaders, innovators, investors and policymakers driving India's next phase of growth from the South and beyond." />
@@ -246,7 +246,7 @@ function Index() {
       </section>
 
       {/* AWARDS */}
-      <section className="awards-band reference-band relative bg-background">
+      <section id="awards" className="awards-band reference-band relative bg-background">
         <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" width={1920} height={1080} className="reference-band-art" />
         <div className="relative mx-auto max-w-7xl px-6 py-24">
           <div className="max-w-[560px] border-l-2 border-primary pl-6">
@@ -282,7 +282,7 @@ function Index() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="reference-band relative bg-secondary">
+      <section id="categories" className="reference-band relative bg-secondary">
         <img src={categoriesBackground.url} alt="" loading="lazy" width={1920} height={1080} className="reference-band-art" />
         <div className="relative mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
@@ -295,7 +295,8 @@ function Index() {
               <article key={g.c} className="award-card" style={{ "--award-accent": g.accent } as CSSProperties}>
                 <div className="relative z-10 p-6">
                   <p className="text-xs font-bold" style={{ color: g.accent }}>{String(gi + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-1 max-w-[75%] text-2xl leading-tight">{g.c}</h3>
+                  <span className="mt-1 block h-0.5 w-4" style={{ background: g.accent }} />
+                  <h3 className="mt-2 max-w-[75%] text-2xl leading-tight">{g.c}</h3>
                   <ul className="mt-5 divide-y divide-border">
                     {g.items.map((it) => { n++; return (
                       <li key={it} className="flex items-baseline gap-3 py-2.5 text-sm">
@@ -314,7 +315,7 @@ function Index() {
       </section>
 
       {/* ICONS */}
-      <section className="icons-band reference-band relative bg-background">
+      <section id="icons" className="icons-band reference-band relative bg-background">
         <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" width={1920} height={1080} className="reference-band-art" />
         <div className="relative mx-auto max-w-7xl px-6 py-24">
           <div className="max-w-[560px] border-l-2 border-primary pl-6">
@@ -329,7 +330,7 @@ function Index() {
       </section>
 
       {/* PARTNERS */}
-      <section className="bg-muted">
+      <section id="partners" className="bg-muted">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-6 py-10">
           <div className="mr-4">
             <p className="eyebrow">Partners</p>
@@ -357,8 +358,40 @@ function Index() {
         </div>
       </section>
 
-      <footer className="bg-foreground py-6 text-center text-xs text-primary-foreground/70">
-        © 2026 ET Edge · Bharat Growth Summit – South Edition
+      {/* FOOTER */}
+      <footer className="bg-foreground text-primary-foreground">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <p className="font-display text-xl leading-snug">ET Edge Bharat Growth Summit</p>
+            <p className="mt-1 text-xs font-bold tracking-[0.25em] text-primary-foreground/70">SOUTH EDITION · BUILDING WHAT'S NEXT</p>
+            <p className="mt-5 flex items-center gap-2 text-sm text-primary-foreground/80"><Calendar className="h-4 w-4" /> 10 December 2026</p>
+            <p className="mt-2 flex items-center gap-2 text-sm text-primary-foreground/80"><MapPin className="h-4 w-4" /> Bengaluru</p>
+          </div>
+          <div>
+            <p className="eyebrow text-primary-foreground/60">Explore</p>
+            <nav className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-primary-foreground/80">
+              <a href="#about" className="transition hover:text-primary-foreground">About</a>
+              <a href="#why" className="transition hover:text-primary-foreground">Why This Matters</a>
+              <a href="#topics" className="transition hover:text-primary-foreground">Topics</a>
+              <a href="#attend" className="transition hover:text-primary-foreground">Who Should Attend</a>
+              <a href="#awards" className="transition hover:text-primary-foreground">Awards</a>
+              <a href="#categories" className="transition hover:text-primary-foreground">Categories</a>
+              <a href="#icons" className="transition hover:text-primary-foreground">Icons</a>
+              <a href="#partners" className="transition hover:text-primary-foreground">Partners</a>
+            </nav>
+          </div>
+          <div>
+            <p className="eyebrow text-primary-foreground/60">Join us</p>
+            <p className="mt-4 text-sm leading-relaxed text-primary-foreground/80">Be part of the conversations shaping what's next for Indian enterprise.</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a href="#invite" className={btnPrimary}>Request an Invite <ArrowRight className="h-4 w-4" /></a>
+              <a href="#partner" className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/40 px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10">Partnership Opportunities</a>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-primary-foreground/15 py-5 text-center text-xs text-primary-foreground/60">
+          © 2026 ET Edge · Bharat Growth Summit – South Edition
+        </div>
       </footer>
     </main>
   );
