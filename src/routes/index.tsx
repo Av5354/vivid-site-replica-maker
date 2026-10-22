@@ -126,7 +126,27 @@ function Index() {
   let n = 0;
 
   return (
-    <main className="overflow-x-hidden">
+    <main id="top" className="overflow-x-hidden">
+      {/* HEADER */}
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3">
+          <a href="#top" aria-label="Back to top">
+            <img src={summitLogo.url} alt="ET Edge Bharat Growth Summit" className="h-10 w-auto mix-blend-multiply" />
+          </a>
+          <nav className="hidden items-center gap-6 text-xs font-semibold text-foreground/80 lg:flex">
+            <a href="#about" className="transition hover:text-primary">About</a>
+            <a href="#why" className="transition hover:text-primary">Why This Matters</a>
+            <a href="#topics" className="transition hover:text-primary">Topics</a>
+            <a href="#attend" className="transition hover:text-primary">Who Should Attend</a>
+            <a href="#awards" className="transition hover:text-primary">Awards</a>
+            <a href="#categories" className="transition hover:text-primary">Categories</a>
+            <a href="#icons" className="transition hover:text-primary">Icons</a>
+            <a href="#partners" className="transition hover:text-primary">Partners</a>
+          </nav>
+          <a href="#invite" className="inline-flex items-center gap-1.5 rounded-md bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-card transition hover:brightness-110">Request an Invite <ArrowRight className="h-3.5 w-3.5" /></a>
+        </div>
+      </header>
+
       {/* HERO */}
       <section className="summit-hero relative bg-background">
         <img src={hero} alt="Bengaluru skyline with Vidhana Soudha and metro" width={1920} height={1080} className="summit-hero-art" />
