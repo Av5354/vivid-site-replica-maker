@@ -4,3 +4,4 @@
 - [x] Rebuild "Topics of Discussion" with the Why-this-matters card layout and remove "Sectors in focus".
 - [x] Use the uploaded paper texture as the background of About the Summit, Why this matters and Topics of Discussion sections.- [x] Rebuild Bharat Growth Icons with the same trophy banner layout as Bharat Growth Awards.
 - [x] Restyle Award Categories cards to match the PDF: colored half-circle corner, matching border, numbered list with dividers.
+- [ ] Add a site header and footer.
