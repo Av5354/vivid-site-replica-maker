@@ -272,7 +272,7 @@ function Index() {
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {awards.map((g, gi) => (
-              <article key={g.c} className="award-card" style={{ "--award-accent": g.accent } as React.CSSProperties}>
+              <article key={g.c} className="award-card" style={{ "--award-accent": g.accent } as CSSProperties}>
                 <div className="relative z-10 p-6">
                   <p className="text-xs font-bold" style={{ color: g.accent }}>{String(gi + 1).padStart(2, "0")}</p>
                   <h3 className="mt-1 max-w-[75%] text-2xl leading-tight">{g.c}</h3>
