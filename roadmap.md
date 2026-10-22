@@ -1,3 +1,5 @@
 - [x] Replace the recreated logo with the official uploaded logo and matching favicon.
 - [x] Match reference typography and restore original photographic artwork.
 - [x] Map supplied original backgrounds and individual images to their PDF sections and verify the page.
+- [ ] Rebuild "Topics of Discussion" with the Why-this-matters card layout and remove "Sectors in focus".
+- [ ] Use the uploaded paper texture as the background of About the Summit, Why this matters and Topics of Discussion sections.
