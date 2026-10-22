@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import {
   ArrowRight, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
   Cpu, Coins, User, Briefcase, Landmark, Laptop, Crown, Building2,
@@ -24,7 +25,6 @@ import attendeeAsset9 from "@/assets/supplied-section-13.jpg.asset.json";
 
 import attendeeBackground from "@/assets/supplied-background-2.jpg.asset.json";
 import categoriesBackground from "@/assets/supplied-background-4.jpg.asset.json";
-import iconsBackground from "@/assets/supplied-background-5.jpg.asset.json";
 import closingBackground from "@/assets/supplied-background-6.jpg.asset.json";
 import legacyArtwork from "@/assets/supplied-section-14.jpg.asset.json";
 import startupArtwork from "@/assets/supplied-section-15.jpg.asset.json";
