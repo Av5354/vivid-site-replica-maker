@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import {
   ArrowRight, Calendar, MapPin, BarChart3, Users, Settings, Leaf,
   Cpu, Coins, User, Briefcase, Landmark, Laptop, Crown, Building2,
@@ -24,7 +25,6 @@ import attendeeAsset9 from "@/assets/supplied-section-13.jpg.asset.json";
 
 import attendeeBackground from "@/assets/supplied-background-2.jpg.asset.json";
 import categoriesBackground from "@/assets/supplied-background-4.jpg.asset.json";
-import iconsBackground from "@/assets/supplied-background-5.jpg.asset.json";
 import closingBackground from "@/assets/supplied-background-6.jpg.asset.json";
 import legacyArtwork from "@/assets/supplied-section-14.jpg.asset.json";
 import startupArtwork from "@/assets/supplied-section-15.jpg.asset.json";
@@ -103,10 +103,10 @@ const attend = [
   { t: "Corporate Venture Arms & Accelerators", i: Send },
 ];
 const awards = [
-  { c: "Startups & Entrepreneurs", tone: "bg-primary", items: ["Emerging Startup of the Year", "Startup of the Year", "Startup of the Year – South", "South Indian Startup to Watch", "Bootstrap Champion", "Emerging Entrepreneur of the Year"] },
-  { c: "Growth & Disruption", tone: "bg-brand-green", items: ["Market Disruptor of the Year", "High Growth Company of the Year", "Business Model Innovation Award", "Customer Experience Excellence Award", "Export Growth Leader", "Make in India Innovation Leader"] },
-  { c: "Consumer & Commerce", tone: "bg-accent", items: ["Emerging Consumer Brand of the Year", "D2C Brand of the Year", "E-commerce Innovation Leader", "Most Loved Consumer Brand"] },
-  { c: "Technology & Sectors", tone: "bg-foreground", items: ["SaaS Company of the Year", "AI Innovation Leader of the Year", "Business Technology Innovator of the Year", "DeepTech Innovation Leader", "FinTech Innovator of the Year", "HealthTech Innovator of the Year", "EdTech Innovator of the Year", "Mobility Innovation Leader"] },
+  { c: "Startups & Entrepreneurs", accent: "oklch(0.72 0.17 50)", items: ["Emerging Startup of the Year", "Startup of the Year", "Startup of the Year – South", "South Indian Startup to Watch", "Bootstrap Champion", "Emerging Entrepreneur of the Year"] },
+  { c: "Growth & Disruption", accent: "oklch(0.78 0.09 220)", items: ["Market Disruptor of the Year", "High Growth Company of the Year", "Business Model Innovation Award", "Customer Experience Excellence Award", "Export Growth Leader", "Make in India Innovation Leader"] },
+  { c: "Consumer & Commerce", accent: "oklch(0.8 0.13 85)", items: ["Emerging Consumer Brand of the Year", "D2C Brand of the Year", "E-commerce Innovation Leader", "Most Loved Consumer Brand"] },
+  { c: "Technology & Sectors", accent: "oklch(0.72 0.09 190)", items: ["SaaS Company of the Year", "AI Innovation Leader of the Year", "Business Technology Innovator of the Year", "DeepTech Innovation Leader", "FinTech Innovator of the Year", "HealthTech Innovator of the Year", "EdTech Innovator of the Year", "Mobility Innovation Leader"] },
 ];
 const partners = ["Title Partner", "Powered By", "Associate Partner", "Knowledge Partner", "Community Partner", "Media Partner"];
 
@@ -272,15 +272,15 @@ function Index() {
           </div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {awards.map((g, gi) => (
-              <article key={g.c} className="overflow-hidden rounded-lg bg-card shadow-card">
-                <div className={`h-1.5 ${g.tone}`} />
-                <div className="p-6">
-                  <p className="text-xs font-bold text-primary">{String(gi + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-1 text-2xl leading-tight">{g.c}</h3>
+              <article key={g.c} className="award-card" style={{ "--award-accent": g.accent } as CSSProperties}>
+                <div className="relative z-10 p-6">
+                  <p className="text-xs font-bold" style={{ color: g.accent }}>{String(gi + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-1 max-w-[75%] text-2xl leading-tight">{g.c}</h3>
                   <ul className="mt-5 divide-y divide-border">
                     {g.items.map((it) => { n++; return (
-                      <li key={it} className="flex gap-3 py-2.5 text-sm">
+                      <li key={it} className="flex items-baseline gap-3 py-2.5 text-sm">
                         <span className="w-6 shrink-0 text-xs font-bold text-primary">{String(n).padStart(2, "0")}</span>
+                        <span className="h-3 w-px shrink-0 self-center bg-border" />
                         <span className="text-foreground/80">{it}</span>
                       </li>
                     ); })}
@@ -295,14 +295,16 @@ function Index() {
 
       {/* ICONS */}
       <section className="icons-band reference-band relative bg-background">
-        <img src={iconsBackground.url} alt="" loading="lazy" width={1920} height={1080} className="reference-band-art" />
-        <div className="relative mx-auto max-w-4xl px-6 py-20 text-center">
-          <p className="eyebrow">Recognition</p>
-          <h2 className="mt-3 text-3xl md:text-[38px]">Bharat Growth Icons</h2>
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-            Alongside the Bharat Growth Awards, the summit will host the <strong className="text-foreground">Bharat Growth Icon recognitions</strong>, acknowledging individuals contributing to India's evolving enterprise landscape through leadership, innovation, transformation and sustainable growth.
-          </p>
-          <div className="mt-8 flex justify-center"><CTAs /></div>
+        <img src={trophy} alt="Bharat Growth Awards trophy" loading="lazy" width={1920} height={1080} className="reference-band-art" />
+        <div className="relative mx-auto max-w-7xl px-6 py-24">
+          <div className="max-w-[560px] border-l-2 border-primary pl-6">
+            <p className="eyebrow">Bharat Growth Icons</p>
+            <h2 className="mt-4 text-5xl leading-[1.05] md:text-[44px]">Honouring the icons shaping Bharat's enterprise story.</h2>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              Alongside the Bharat Growth Awards, the summit will host the <strong className="text-foreground">Bharat Growth Icon recognitions</strong>, acknowledging individuals contributing to India's evolving enterprise landscape through leadership, innovation, transformation and sustainable growth.
+            </p>
+            <div className="mt-8"><CTAs /></div>
+          </div>
         </div>
       </section>
 
