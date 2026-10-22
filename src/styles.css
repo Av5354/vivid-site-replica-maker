@@ -187,9 +187,9 @@
 .topic-art { width: 112px; height: 140px; flex-shrink: 0; object-fit: contain; mix-blend-mode: multiply; }
 .closing-band h2, .closing-band p { max-width: 520px; }
 .icons-band { min-height: 520px; }
-.award-card { position: relative; border: 1.5px solid var(--award-accent, var(--border)); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: var(--shadow-card); }
-.award-card::after { content: ""; position: absolute; top: 0; right: 0; width: 110px; height: 110px; border-radius: 0 0 0 100%; background: var(--award-accent); }
-.award-card::before { content: ""; position: absolute; top: 0; right: 0; width: 132px; height: 132px; border-radius: 0 0 0 100%; border: 1.5px solid var(--award-accent); opacity: 0.45; }
+.award-card { position: relative; border: 1px solid color-mix(in oklab, var(--award-accent, var(--border)) 60%, transparent); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: var(--shadow-card); }
+.award-card::after { content: ""; position: absolute; top: 0; right: 0; width: 150px; height: 150px; border-radius: 0 0 0 100%; background: radial-gradient(circle at top right, var(--award-accent) 0%, color-mix(in oklab, var(--award-accent) 55%, transparent) 55%, transparent 80%); }
+.award-card::before { content: ""; position: absolute; top: 0; right: 0; width: 172px; height: 172px; border-radius: 0 0 0 100%; border: 1px solid var(--award-accent); opacity: 0.4; }
 .closing-band .reference-band-art { object-position: right center; }
 @media (max-width: 767px) {
   .summit-hero { min-height: 850px; }
